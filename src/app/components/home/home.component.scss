@@ -1,0 +1,36 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 50%;
+  height: 100%;
+}
+
+.title {
+  font-size: 50px;
+  line-height: 50px;
+}
+
+.developer {
+  .made-by {
+    font-size: 25px;
+    line-height: 2rem;
+  }
+
+  .name {
+    font-size: 30px;
+    margin-top: 0.7rem;
+  }
+
+  .mail {
+    font-size: 25px;
+    margin-top: 1rem;
+  }
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+}

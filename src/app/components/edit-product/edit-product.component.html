@@ -1,0 +1,44 @@
+<mat-toolbar>
+  <span>Edit product</span>
+</mat-toolbar>
+<div class="wrapper">
+  <mat-card class="mat-card mat-elevation-z8">
+    <mat-card-content>
+      <form class="form">
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input matInput />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea cdkTextareaAutosize matInput></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Brand</mat-label>
+          <input matInput/>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{ category }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <input type="number" matInput />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+
+    <div class="actions">
+      <button mat-stroked-button (click)="cancel()">Cancel</button>
+      <button mat-stroked-button color="primary" >Submit </button>
+    </div>
+  </mat-card>
+</div>

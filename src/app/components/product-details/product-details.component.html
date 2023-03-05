@@ -1,0 +1,33 @@
+<mat-toolbar>
+  <span>Product Details</span>
+</mat-toolbar>
+<div class="wrapper">
+  <mat-card class="mat-card mat-elevation-z8">
+    <mat-card-header class="card-header">
+      <a mat-stroked-button>Go Back</a>
+      <a mat-stroked-button class="edit">Edit</a>
+    </mat-card-header>
+    <mat-card-content *ngIf="product" class="card-content">
+      <div class="data">
+        <div class="title">Title</div>
+        <div class="value">{{ product.title }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Description</div>
+        <div class="value">{{ product.description }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Brand</div>
+        <div class="value">{{ product.brand }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Category</div>
+        <div class="value">{{ product.category }}</div>
+      </div>
+      <div class="data">
+        <div class="title">Price</div>
+        <div class="value">{{ product.price }}</div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
