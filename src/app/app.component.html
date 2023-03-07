@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
-  <a mat-button>Market</a>
-  <a mat-button>Products</a>
+  <a mat-button routerLink="/home">Market</a>
+  <a mat-button routerLink="/products">Products</a>
 </mat-toolbar>
 <div class="content">
-  <app-home></app-home>
+  <router-outlet></router-outlet>
 </div>

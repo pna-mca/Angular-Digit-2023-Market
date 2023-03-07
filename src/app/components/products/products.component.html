@@ -1,7 +1,7 @@
 <mat-toolbar>
   <span>Products</span>
   <div class="cta-button">
-    <a mat-stroked-button>Add new product</a>
+    <a mat-stroked-button routerLink="create">Add new product</a>
   </div>
 </mat-toolbar>
 <div class="wrapper">
@@ -34,6 +34,6 @@
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="row" [routerLink]="['/products', row.id]"></tr>
   </table>
 </div>

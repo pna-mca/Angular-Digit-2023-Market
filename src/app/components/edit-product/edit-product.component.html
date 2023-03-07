@@ -4,25 +4,26 @@
 <div class="wrapper">
   <mat-card class="mat-card mat-elevation-z8">
     <mat-card-content>
-      <form class="form">
+      <form class="form" [formGroup]="testFormGrupa">
         <mat-form-field appearance="outline">
           <mat-label>Title</mat-label>
-          <input matInput />
+          <input matInput formControlName="title"/>
         </mat-form-field>
+        <mat-error *ngIf="testFormGrupa.controls['title'].errors && testFormGrupa.controls['title'].touched && testFormGrupa.controls['title'].errors['required']">Title is required.</mat-error>
 
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea cdkTextareaAutosize matInput></textarea>
+          <textarea cdkTextareaAutosize matInput formControlName="description"></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Brand</mat-label>
-          <input matInput/>
+          <input matInput formControlName="brand"/>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Category</mat-label>
-          <mat-select>
+          <mat-select formControlName="category">
             <mat-option *ngFor="let category of categories" [value]="category">
               {{ category }}
             </mat-option>
@@ -31,14 +32,17 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Price</mat-label>
-          <input type="number" matInput />
+          <input type="number" matInput formControlName="price"/>
         </mat-form-field>
+        <mat-error *ngIf="testFormGrupa.controls['price'].errors && testFormGrupa.controls['price'].touched && testFormGrupa.controls['price'].errors['price'] === 0">Price cannot be lower or equal to 0.</mat-error>
+        <mat-error *ngIf="testFormGrupa.controls['price'].errors && testFormGrupa.controls['price'].touched && testFormGrupa.controls['price'].errors['required']">Title is required.</mat-error>
+
       </form>
     </mat-card-content>
 
     <div class="actions">
       <button mat-stroked-button (click)="cancel()">Cancel</button>
-      <button mat-stroked-button color="primary" >Submit </button>
+      <button mat-stroked-button color="primary" (click)="submit()" [disabled]="testFormGrupa.invalid">Submit </button>
     </div>
   </mat-card>
 </div>
