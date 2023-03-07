@@ -4,8 +4,8 @@
 <div class="wrapper">
   <mat-card class="mat-card mat-elevation-z8">
     <mat-card-header class="card-header">
-      <a mat-stroked-button>Go Back</a>
-      <a mat-stroked-button class="edit">Edit</a>
+      <a mat-stroked-button routerLink="/products">Go Back</a>
+      <a mat-stroked-button class="edit" routerLink="edit">Edit</a>
     </mat-card-header>
     <mat-card-content *ngIf="product" class="card-content">
       <div class="data">

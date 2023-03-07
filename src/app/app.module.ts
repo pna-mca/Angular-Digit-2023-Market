@@ -9,6 +9,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { ProductsComponent } from './components/products/products.component';
 import { PriceValidatorDirective } from './directives/price-validator.directive';
+import { RouterModule } from '@angular/router';
+import { productGuard } from './guards/product-guard';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,18 @@ import { PriceValidatorDirective } from './directives/price-validator.directive'
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialExampleModule
+    MaterialExampleModule,
+    RouterModule.forRoot([
+      { path: 'home', component: HomeComponent },
+      { path: 'products/:id/edit', component: EditProductComponent, canActivate: [productGuard] },
+      { path: 'products/create', component: CreateProductComponent },
+      { path: 'products/:id', component: ProductDetailsComponent, canActivate: [productGuard] },
+      { path: 'products', component: ProductsComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: '**', redirectTo: 'home', pathMatch: 'full' }
+    ]),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

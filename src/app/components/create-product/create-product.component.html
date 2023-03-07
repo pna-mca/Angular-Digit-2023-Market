@@ -4,25 +4,26 @@
 <div class="wrapper">
   <mat-card class="mat-card mat-elevation-z8">
     <mat-card-content>
-      <form class="form">
+      <form class="form" #formTest="ngForm">
         <mat-form-field appearance="outline">
           <mat-label>Title</mat-label>
-          <input matInput />
+          <input matInput name="title" ngModel #title="ngModel" required/>
         </mat-form-field>
+        <mat-error *ngIf="title.errors && title.touched && title.errors['required']">Title is required.</mat-error>
 
         <mat-form-field appearance="outline">
           <mat-label>Description</mat-label>
-          <textarea cdkTextareaAutosize matInput></textarea>
+          <textarea cdkTextareaAutosize matInput name="description" ngModel [maxlength]="500" maxlength="500"></textarea>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Brand</mat-label>
-          <input type="text" matInput/>
+          <input type="text" matInput name="brand" ngModel/>
         </mat-form-field>
 
         <mat-form-field appearance="outline">
           <mat-label>Category</mat-label>
-          <mat-select >
+          <mat-select name="category" ngModel>
             <mat-option *ngFor="let category of categories" [value]="category">
               {{ category }}
             </mat-option>
@@ -31,17 +32,18 @@
 
         <mat-form-field appearance="outline">
           <mat-label>Price</mat-label>
-          <input type="number" matInput />
+          <input type="number" matInput name="price" ngModel #price="ngModel" appPriceValidator required/>
         </mat-form-field>
+        <mat-error *ngIf="price.errors && price.touched && price.errors['price'] === 0">Price must be larger than 0.</mat-error>
 
-        <div class="actions">
-          <button mat-stroked-button>Cancel</button>
-          <button mat-stroked-button color="primary">Submit</button>
-        </div>
       </form>
+
+      <div class="actions">
+        <button mat-stroked-button type="button" (click)="cancel()">Cancel</button>
+        <button mat-stroked-button color="primary" (click)="submit(formTest.value)" [disabled]="formTest.invalid">Submit</button>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>
 
-
-
+{{ formTest.value | json }}
